@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <meta name="description" content="A Malcoln Engtech desenvolve sistemas e soluções de engenharia para transformar desafios em resultados.">
+  <title>Malcoln Engtech — Sistemas e Engenharia</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b1220;
+      --surface: #111b2c;
+      --surface-light: #17243a;
+      --text: #f3f6fb;
+      --muted: #a6b2c5;
+      --accent: #75c9f3;
+      --accent-dark: #123753;
+      --line: rgba(182, 199, 222, .15);
+      --max-width: 1160px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 78% 7%, rgba(47, 115, 131, .16), transparent 30rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      z-index: 10;
+      top: 0;
+      border-bottom: 1px solid var(--line);
+      background: rgba(11, 18, 32, .88);
+      backdrop-filter: blur(16px);
+    }
+
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: .95rem;
+      font-weight: 750;
+      letter-spacing: .03em;
+    }
+
+    .brand-logo {
+      display: block;
+      width: 48px;
+      aspect-ratio: 1;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .brand-name span {
+      color: var(--accent);
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .main-nav a {
+      transition: color .2s ease;
+    }
+
+    .main-nav a:hover {
+      color: var(--text);
+    }
+
+    .main-nav .nav-cta {
+      padding: 9px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--text);
+    }
+
+    .main-nav .nav-cta:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero {
+      padding: 86px 0 96px;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.08fr .82fr;
+      align-items: center;
+      gap: 56px;
+    }
+
+    .hero-content {
+      max-width: 680px;
+    }
+
+    .hero-visual {
+      width: min(100%, 430px);
+      justify-self: end;
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--surface);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, .32);
+    }
+
+    .hero-visual img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 760px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 42px;
+      }
+
+      .hero-visual {
+        width: min(100%, 390px);
+        justify-self: center;
+      }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 22px;
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 24px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 24px;
+      font-size: clamp(2.7rem, 6.7vw, 5.25rem);
+      font-weight: 650;
+      letter-spacing: -.065em;
+      line-height: 1.03;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .hero-copy {
+      max-width: 570px;
+      margin-bottom: 34px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 19px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      font-size: .92rem;
+      font-weight: 700;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: #09201e;
+    }
+
+    .button-primary:hover {
+      background: #76e4d0;
+    }
+
+    .button-secondary {
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .button-secondary:hover {
+      border-color: rgba(117, 201, 243, .55);
+    }
+
+    .button svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .section {
+      padding: 88px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      max-width: 660px;
+      margin-bottom: 42px;
+    }
+
+    .section-heading .eyebrow {
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      margin-bottom: 14px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 620;
+      letter-spacing: -.045em;
+      line-height: 1.12;
+    }
+
+    .section-heading > p:last-child {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 1.04rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .service-card {
+      min-height: 240px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(145deg, rgba(23, 36, 58, .8), rgba(17, 27, 44, .52));
+    }
+
+    .service-icon {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      margin-bottom: 24px;
+      place-items: center;
+      border: 1px solid rgba(117, 201, 243, .2);
+      border-radius: 11px;
+      background: rgba(117, 201, 243, .08);
+      color: var(--accent);
+    }
+
+    .service-icon svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    h3 {
+      margin-bottom: 9px;
+      font-size: 1.12rem;
+      font-weight: 650;
+      letter-spacing: -.02em;
+    }
+
+    .service-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    .approach {
+      background: linear-gradient(110deg, rgba(17, 27, 44, .76), rgba(11, 18, 32, .2));
+    }
+
+    .approach-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      align-items: start;
+      gap: 72px;
+    }
+
+    .approach-layout .section-heading {
+      margin-bottom: 0;
+    }
+
+    .approach-list {
+      display: grid;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .approach-list li {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 18px;
+      padding: 21px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .approach-list li:first-child {
+      padding-top: 0;
+    }
+
+    .step-number {
+      padding-top: 2px;
+      color: var(--accent);
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    .approach-list h3 {
+      margin-bottom: 5px;
+    }
+
+    .approach-list p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 64px;
+    }
+
+    .about-copy {
+      max-width: 600px;
+    }
+
+    .about-copy > p:last-child {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .principle {
+      min-height: 112px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(17, 27, 44, .58);
+    }
+
+    .principle strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: .97rem;
+    }
+
+    .principle span {
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    .contact {
+      padding: 72px 0;
+      border-top: 1px solid var(--line);
+      background:
+        radial-gradient(ellipse at 100% 50%, rgba(85, 214, 190, .11), transparent 28rem),
+        var(--surface);
+    }
+
+    .contact-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .contact-copy {
+      max-width: 660px;
+    }
+
+    .contact-copy .eyebrow {
+      margin-bottom: 14px;
+    }
+
+    .contact-copy h2 {
+      margin-bottom: 10px;
+    }
+
+    .contact-copy > p:last-child {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .site-footer {
+      padding: 24px 0;
+      color: var(--muted);
+      font-size: .84rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-inner p {
+      margin: 0;
+    }
+
+    .footer-brand {
+      color: var(--text);
+      font-weight: 650;
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(var(--max-width), calc(100% - 36px));
+      }
+
+      .header-inner {
+        min-height: 68px;
+        gap: 16px;
+      }
+
+      .main-nav {
+        gap: 16px;
+        font-size: .82rem;
+      }
+
+      .main-nav a:nth-child(2) {
+        display: none;
+      }
+
+      .main-nav .nav-cta {
+        padding: 8px 11px;
+      }
+
+      .hero {
+        padding: 72px 0 78px;
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        min-height: auto;
+      }
+
+      .service-icon {
+        margin-bottom: 18px;
+      }
+
+      .approach-layout,
+      .about {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .contact-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .brand {
+        gap: 9px;
+        font-size: .83rem;
+      }
+
+      .brand-logo {
+        width: 40px;
+      }
+
+      .main-nav {
+        gap: 11px;
+        font-size: .77rem;
+      }
+
+      .main-nav a:first-child {
+        display: none;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .hero-actions .button {
+        width: 100%;
+      }
+
+      .principles {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Malcoln Engtech, início">
+        <img class="brand-logo" src="assets/logo.jpg" alt="">
+        <span class="brand-name">MALCOLN <span>ENGTECH</span></span>
+      </a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <a href="#solucoes">Soluções</a>
+        <a href="#abordagem">Abordagem</a>
+        <a href="#sobre">Sobre</a>
+        <a class="nav-cta" href="#contato">Vamos conversar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-layout">
+        <div class="hero-content">
+          <p class="eyebrow">Tecnologia com propósito</p>
+          <h1>Engenharia para resolver. <span>Tecnologia para evoluir.</span></h1>
+          <p class="hero-copy">Desenvolvemos sistemas e soluções de engenharia que transformam desafios complexos em resultados práticos para o seu negócio.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#solucoes">
+              Conheça nossas soluções
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="button button-secondary" href="#sobre">Conheça a Malcoln Engtech</a>
+          </div>
+        </div>
+        <figure class="hero-visual">
+          <img src="assets/logo.jpg" alt="Identidade visual da Malcoln Engtech: tecnologia, engenharia, inovação e inteligência.">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="solucoes">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">O que fazemos</p>
+          <h2>Soluções pensadas para funcionar no mundo real.</h2>
+          <p>Unimos conhecimento técnico e desenvolvimento de software para atender às necessidades de cada projeto.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="4.5" width="17" height="15" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="m7 9 2.5 2.5L7 14m5 0h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Desenvolvimento de sistemas</h3>
+            <p>Aplicações e ferramentas digitais desenvolvidas para simplificar processos e apoiar as operações.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5m0 14h16M7 15l4-4 3 2 5-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 7h3v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Automação e integração</h3>
+            <p>Integração de dados e automação de tarefas para conectar sistemas e reduzir trabalho repetitivo.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5 19 7v5c0 4.1-2.9 7-7 8.5C7.9 19 5 16.1 5 12V7l7-3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Engenharia aplicada</h3>
+            <p>Análise técnica e soluções sob medida para transformar requisitos de engenharia em entregas confiáveis.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section approach" id="abordagem">
+      <div class="container approach-layout">
+        <div class="section-heading">
+          <p class="eyebrow">Nossa abordagem</p>
+          <h2>Do desafio à solução, com clareza em cada etapa.</h2>
+          <p>Trabalhamos lado a lado com você para entender o cenário, definir prioridades e construir com propósito.</p>
+        </div>
+        <ol class="approach-list">
+          <li>
+            <span class="step-number">01</span>
+            <div><h3>Entender</h3><p>Conhecemos o contexto, os objetivos e os desafios do projeto.</p></div>
+          </li>
+          <li>
+            <span class="step-number">02</span>
+            <div><h3>Planejar</h3><p>Definimos uma direção técnica adequada às necessidades e prioridades.</p></div>
+          </li>
+          <li>
+            <span class="step-number">03</span>
+            <div><h3>Construir</h3><p>Desenvolvemos a solução com foco em qualidade, utilidade e evolução.</p></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="sobre">
+      <div class="container about">
+        <div class="about-copy">
+          <p class="eyebrow">Sobre a Malcoln Engtech</p>
+          <h2>Conhecimento técnico a serviço de boas ideias.</h2>
+          <p>A Malcoln Engtech atua no desenvolvimento de sistemas e soluções de engenharia. Nosso propósito é aproximar tecnologia e conhecimento técnico para criar ferramentas úteis, eficientes e alinhadas aos desafios de cada negócio.</p>
+        </div>
+        <div class="principles" aria-label="Princípios de trabalho">
+          <div class="principle"><strong>Feito para você</strong><span>Soluções alinhadas ao seu contexto.</span></div>
+          <div class="principle"><strong>Foco no essencial</strong><span>Clareza nas prioridades e entregas.</span></div>
+          <div class="principle"><strong>Base técnica sólida</strong><span>Engenharia aplicada com critério.</span></div>
+          <div class="principle"><strong>Pronto para evoluir</strong><span>Construído pensando no próximo passo.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contato">
+      <div class="container contact-inner">
+        <div class="contact-copy">
+          <p class="eyebrow">Vamos construir juntos</p>
+          <h2>Tem um desafio ou uma ideia?</h2>
+          <p>Conheça nossas soluções e descubra como podemos ajudar a tirar seu projeto do papel.</p>
+        </div>
+        <a class="button button-primary" href="#solucoes">
+          Explorar soluções
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">Malcoln Engtech</p>
+      <p>&copy; <span id="year">2026</span> Malcoln Engtech. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>
